@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_6bf91/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6bf91.dir/build.make CMakeFiles/cmTC_6bf91.dir/build
+make[1]: Entering directory '/home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6bf91.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -Wall  -O3 -march=native     -o CMakeFiles/cmTC_6bf91.dir/CheckSymbolExists.c.o   -c /home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_6bf91
+/home/liliangbin/work/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6bf91.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall  -O3 -march=native      -rdynamic CMakeFiles/cmTC_6bf91.dir/CheckSymbolExists.c.o  -o cmTC_6bf91 
+CMakeFiles/cmTC_6bf91.dir/CheckSymbolExists.c.o：在函数‘main’中：
+CheckSymbolExists.c:(.text.startup+0x6)：对‘pthread_create’未定义的引用
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_6bf91.dir/build.make:86: recipe for target 'cmTC_6bf91' failed
+make[1]: *** [cmTC_6bf91] Error 1
+make[1]: Leaving directory '/home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_6bf91/fast' failed
+make: *** [cmTC_6bf91/fast] Error 2
+
+File /home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_35153/fast"
+/usr/bin/make -f CMakeFiles/cmTC_35153.dir/build.make CMakeFiles/cmTC_35153.dir/build
+make[1]: Entering directory '/home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_35153.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall  -O3 -march=native  -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_35153.dir/CheckFunctionExists.c.o   -c /home/liliangbin/work/clion-2018.3.4/bin/cmake/linux/share/cmake-3.13/Modules/CheckFunctionExists.c
+Linking C executable cmTC_35153
+/home/liliangbin/work/clion-2018.3.4/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_35153.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall  -O3 -march=native  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_35153.dir/CheckFunctionExists.c.o  -o cmTC_35153 -lpthreads 
+/usr/bin/ld: 找不到 -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_35153.dir/build.make:86: recipe for target 'cmTC_35153' failed
+make[1]: *** [cmTC_35153] Error 1
+make[1]: Leaving directory '/home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_35153/fast' failed
+make: *** [cmTC_35153/fast] Error 2
+
+
