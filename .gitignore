@@ -26,6 +26,10 @@
 *.a
 *.lib
 Vocabulary/
+build/
+cmake-build-debug/
+cmake_modules/
+
 # Executables
 *.exe
 *.out
