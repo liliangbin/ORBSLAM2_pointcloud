@@ -44,6 +44,7 @@ public:
     void shutdown();
     void viewer();
 
+    PointCloud::Ptr getGlobalMap();
 protected:
     PointCloud::Ptr generatePointCloud(KeyFrame* kf, cv::Mat& color, cv::Mat& depth);
 

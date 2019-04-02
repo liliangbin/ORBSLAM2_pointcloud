@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/liliangbin/文档/ORB_SLAM2/Examples/RGB-D/rgbd_my.cc" "/home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/rgbd_my.dir/Examples/RGB-D/rgbd_my.cc.o"
+  "/home/liliangbin/文档/ORB/Examples/RGB-D/rgbd_my.cc" "/home/liliangbin/文档/ORB/cmake-build-debug/CMakeFiles/rgbd_my.dir/Examples/RGB-D/rgbd_my.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -66,7 +66,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/liliangbin/文档/ORB_SLAM2/cmake-build-debug/CMakeFiles/ORB_SLAM2.dir/DependInfo.cmake"
+  "/home/liliangbin/文档/ORB/cmake-build-debug/CMakeFiles/ORB_SLAM2.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -59,6 +59,7 @@ public:
 
     void clear();
 
+   // KeyFrame  GetCurrentKeyFrames();
     vector<KeyFrame*> mvpKeyFrameOrigins;
 
     std::mutex mMutexMapUpdate;

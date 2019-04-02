@@ -26,6 +26,11 @@
 
 #include <ros/ros.h>
 
+#include<pcl/point_cloud.h>
+#include<pcl_conversions/pcl_conversions.h>
+#include<sensor_msgs/PointCloud2.h>
+#include<pcl/io/pcd_io.h>
+
 #include <cv_bridge/cv_bridge.h>
 #include <message_filters/subscriber.h>
 #include <message_filters/time_synchronizer.h>
@@ -66,16 +71,40 @@ int main(int argc, char **argv)
 
     ros::NodeHandle nh;
 
+    // TODO  测试数据集
+    ros::Publisher pcl_pub = nh.advertise<sensor_msgs::PointCloud2> ("/orbslam2_with_kinect2/output", 10);
+
+    pcl::PointCloud<pcl::PointXYZ> cloud;
+    sensor_msgs::PointCloud2 output;
+    cloud=SLAM.getGlobalMap();
+
+    pcl::toROSMsg(cloud,output);// 转换成ROS下的数据类型 最终通过topic发布
+
+    output.header.stamp=ros::Time::now();
+    output.header.frame_id  ="camera_rgb_frame";
+
+    ros::Rate loop_rate(1);
+
+    pcl_pub.pulish(output);
+
+    //TODO 结束符
+
     message_filters::Subscriber<sensor_msgs::Image> rgb_sub(nh, "/camera/rgb/image_raw", 1);
     message_filters::Subscriber<sensor_msgs::Image> depth_sub(nh, "camera/depth_registered/image_raw", 1);
+
     typedef message_filters::sync_policies::ApproximateTime<sensor_msgs::Image, sensor_msgs::Image> sync_pol;
     message_filters::Synchronizer<sync_pol> sync(sync_pol(10), rgb_sub,depth_sub);
     sync.registerCallback(boost::bind(&ImageGrabber::GrabRGBD,&igb,_1,_2));
 
+    SLAM.save();
+    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");
+
+    //不用发布了，每次都去读取最后一行的数据，就是当前节点的位置情况。
+//循环体，我们在其前面开始打印出数据
+
     ros::spin();
 
     // Stop all threads
-        SLAM.save();
 
     SLAM.Shutdown();
 
@@ -113,6 +142,8 @@ void ImageGrabber::GrabRGBD(const sensor_msgs::ImageConstPtr& msgRGB,const senso
     }
 
     mpSLAM->TrackRGBD(cv_ptrRGB->image,cv_ptrD->image,cv_ptrRGB->header.stamp.toSec());
+    cout << " get some message "<<endl;
+
 }
 
 

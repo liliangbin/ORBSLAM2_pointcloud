@@ -130,4 +130,9 @@ void Map::clear()
     mvpKeyFrameOrigins.clear();
 }
 
+/*vector<KeyFrame*> Map::GetCurrentKeyFrames() {
+
+    return vector<KeyFrame *>(mspKeyFrames.begin(),mspKeyFrames.end());
+}*/
+
 } //namespace ORB_SLAM
